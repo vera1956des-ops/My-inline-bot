@@ -13,26 +13,26 @@ dp = Dispatcher()
 
 @dp.inline_query()
 async def inline_handler(query: types.InlineQuery):
-    results = [
-        InlineQueryResultArticle(
-            id=hashlib.md5(str(random.random()).encode()).hexdigest(),
-            title="КТО Я СЕГОДНЯ?",
-            input_message_content=InputTextMessageContent(message_text=f"Я сегодня: {random.choice(['Сигма','Скуф','Тюбик'])}")
-        )
-    ]
-    await query.answer(results, cache_time=1)
-
+    results = [
+        InlineQueryResultArticle(
+            id=hashlib.md5(str(random.random()).encode()).hexdigest(),
+            title="КТО Я СЕГОДНЯ?",
+            input_message_content=InputTextMessageContent(message_text=f"Я сегодня: {random.choice(['Сигма','Скуф','Тюбик'])}")
+        )
+       ]
+    await query.answer(results, cache_time=1)
+  
 async def handle(request):
-    return web.Response(text="OK")
-
+    return web.Response(text="OK")
+  
 async def main():
-    app = web.Application()
-    app.router.add_get('/', handle)
-    runner = web.AppRunner(app)
-    await runner.setup()
-    site = web.TCPSite(runner, '0.0.0.0', int(os.getenv('PORT', 10000)))
-    await site.start()
-    await dp.start_polling(bot)
-
+    app = web.Application()
+    app.router.add_get('/', handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', int(os.getenv('PORT', 10000)))
+    await site.start()
+    await dp.start_polling(bot)
+  
 if __name__ == '__main__':
-    asyncio.run(main())
+    asyncio.run(main())
