@@ -7,7 +7,7 @@ from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
 from aiohttp import web
 
 # ТВОЙ ТОКЕН
-API_TOKEN = '8734155157:AAHq1JmyeI1xn6O7G-VWuR7TcGYik3RrAYM'
+API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
