@@ -11,30 +11,19 @@ API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
-TRUTHS = ["Стыдный поступок?", "Кто нравится в чате?", "Последняя ложь?"]
-DARES = ["Скинь фото галереи", "Напиши бывшему 'скучаю'", "10 отжиманий"]
-MEME_ROLES = ["Скуф", "Альтушка", "Сигма", "Гигачад", "Нормис", "Тюбик"]
-
 @dp.inline_query()
 async def inline_handler(query: types.InlineQuery):
-    results = []
-    def get_id(name):
-        return hashlib.md5(name.encode()).hexdigest()
-    games = [
-        ('truth', '❓ Правда', f"Вопрос: {random.choice(TRUTHS)}"),
-        ('dare', '⚡️ Действие', f"Задание: {random.choice(DARES)}"),
-        ('meme', '🤡 Кто ты?', f"Сегодня ты: {random.choice(MEME_ROLES)}")
+    results = [
+        InlineQueryResultArticle(
+            id=hashlib.md5(str(random.random()).encode()).hexdigest(),
+            title="КТО Я СЕГОДНЯ?",
+            input_message_content=InputTextMessageContent(message_text=f"Я сегодня: {random.choice(['Сигма','Скуф','Тюбик'])}")
+        )
     ]
-    for i, (uid, title, text) in enumerate(games):
-        results.append(InlineQueryResultArticle(
-            id=get_id(uid + str(i)),
-            title=title,
-            input_message_content=InputTextMessageContent(message_text=text)
-        ))
     await query.answer(results, cache_time=1)
 
 async def handle(request):
-    return web.Response(text="Alive")
+    return web.Response(text="OK")
 
 async def main():
     app = web.Application()
