@@ -60,7 +60,6 @@ message_text=f"Игра: ДЕЙСТВИЕ\n\nЗадание: {dare_text}",
 parse_mode="HTML"
 
     ) 
-)
 
 # 3. Кто ты сегодня?
 fruit_text = random.choice(FRUITS)
