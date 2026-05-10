@@ -43,7 +43,7 @@ async def inline_handler(query: types.InlineQuery):
 
 # 2. Игра "Действие"
 dare_text = random.choice(DARES)
-results.append(InlineQueryResultArticle(
+results.append(InlineQueryResultArticle() 
 id=get_id('dare'),
 title='⚡️ Игра: Действие',
 description='Выдать жесткое задание',
