@@ -2,9 +2,9 @@ import random
 import hashlib
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
-
+def get_id(name):
 # Вставь сюда свой токен от BotFather
-API_TOKEN = 'ТВОЙ_ТОКЕН_ЗДЕСЬ'
+API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
@@ -26,7 +26,6 @@ async def inline_handler(query: types.InlineQuery):
     results = []
 
 # Вспомогательная функция для генерации ID
-    def get_id(name):
 return hashlib.md5(name.encode()).hexdigest()
 
 # 1. Игра "Правда"
