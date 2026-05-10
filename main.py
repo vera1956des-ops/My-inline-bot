@@ -26,7 +26,7 @@ async def inline_handler(query: types.InlineQuery):
     results = []
 
 # Вспомогательная функция для генерации ID
-def get_id(name) 
+def get_id(name): 
     return hashlib.md5(name.encode()).hexdigest()
 
 # 1. Игра "Правда"
