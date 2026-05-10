@@ -187,3 +187,6 @@ parse_mode="HTML"
 await query.answer(results, cache_time=1)
 
 async def main():
+    app = web.Application()  # Видишь этот отступ?!
+    app.router.add_get('/', h)
+    # ... и так далее весь блок до конца функции
