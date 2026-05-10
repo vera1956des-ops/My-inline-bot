@@ -26,20 +26,20 @@ async def inline_handler(query: types.InlineQuery):
     results = []
 
 # Вспомогательная функция для генерации ID
-def get_id(name): 
+    def get_id(name): 
     return hashlib.md5(name.encode()).hexdigest()
 
-# 1. Игра "Правда"
-truth_text = random.choice(TRUTHS)
+    # 1. Игра "Правда"
+    truth_text = random.choice(TRUTHS)
     results.append(InlineQueryResultArticle(
-id=get_id('truth'),
-title='❓ Игра: Правда',
-description='Выдать случайный вопрос',
-input_message_content=InputTextMessageContent(
-message_text=f"Игра: ПРАВДА\n\nВопрос: {truth_text}",
-parse_mode="HTML"
-    )
-))
+    id=get_id('truth'),
+    title='❓ Игра: Правда',
+    description='Выдать случайный вопрос',
+    input_message_content=InputTextMessageContent(
+    message_text=f"Игра: ПРАВДА\n\nВопрос: {truth_text}",
+    parse_mode="HTML"
+     )
+  ))
 
 # 2. Игра "Действие"
 dare_text = random.choice(DARES)
