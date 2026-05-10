@@ -184,6 +184,6 @@ parse_mode="HTML"
 ))
 
     # Отправляем весь список (максимум 50 результатов за раз)
-    await query.answer(results, cache_time=1)
+await query.answer(results, cache_time=1)
 
 async def main():
