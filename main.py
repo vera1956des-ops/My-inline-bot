@@ -24,8 +24,8 @@ async def inline_handler(query: types.InlineQuery):
         id='1',
         title='❓ Игра: Правда',
         description='Выдать случайный вопрос',
-        input_message_content=InputTextMessageContent
-        (message_text=f"Игра: ПРАВДА\n\nВопрос: {truth_text}", parse_mode="HTML")
+        input_message_content=InputTextMessageContent(
+            message_text=f"Игра: ПРАВДА\n\nВопрос: {truth_text}", parse_mode="HTML")
     ))
 
     # 2. Игра "Действие"
@@ -44,17 +44,17 @@ async def inline_handler(query: types.InlineQuery):
         id='3',
         title='🍏 Какой ты фрукт?',
         description='Узнай свою судьбу на сегодня',
-   inputinput_message_content=InputTextMessageContent(
+        input_message_content=InputTextMessageContent(
            messagee_text=f"Я сегодня: {fruit_text}")
     )) 
     
     # 4.Отчет до смерти
-        total_seconds=random.randint(10,86400)
-        hours=total_seconds//3600
-        minutes=(total_seconds %3600)//60
-        seconds=total_seconds %60
+        total_seconds = random.randint(10, 86400)
+        hours = total_seconds // 3600
+        minutes = (total_seconds %3600) // 60
+        seconds=total_seconds % 60
     
-        time_str=f"{hours}ч{minutes}м{seconds}с"
+        time_str=f"{hours}ч {minutes}м {seconds} с"
 
         results.append(
             types.InlineQueryResultArticle(
