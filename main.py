@@ -49,7 +49,7 @@ async def inline_handler(query: types.InlineQuery):
     )) 
     
     # 4.Отчет до смерти
-        total_seconds = random.randint(10, 86400)
+        total_seconds = random.randint(10,86400)
         hours = total_seconds // 3600
         minutes = (total_seconds %3600) // 60
         seconds=total_seconds % 60
