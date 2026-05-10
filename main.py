@@ -45,7 +45,7 @@ dare_text = random.choice(DARES)
 results.append(InlineQueryResultArticle(
 types.InlineQueryResultArticle(
 id='1', 
-title='КТО Я? ', 
+title='КТО Я?', 
 input_message_content=types.InputTextMessageContent(
 message_text='Я – легенда кодинга (нет) '
 
