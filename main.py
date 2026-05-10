@@ -3,7 +3,7 @@ import hashlib
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
 def get_id(name):
-# Вставь сюда свой токен от BotFather
+    return hashlib.md5(name.encode()).hexdigest() 
 API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
 
 bot = Bot(token=API_TOKEN)
