@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
 
 # Вставь сюда свой токен от BotFather
-API_TOKEN = 'ТВОЙ_ТОКЕН_ЗДЕСЬ'
+API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
