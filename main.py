@@ -187,4 +187,9 @@ parse_mode="HTML"
 await query.answer(results, cache_time=1)
 
 async def main():
-    app = web.Application()
+    app.router.add_get('/',h)
+    runner=web.AppRunner(app)
+    await runner.setup() 
+    site=web.TCPSite(runner,'0.0.0.0',10000) 
+    await site.start() 
+    await dp.start_polling(bot) 
