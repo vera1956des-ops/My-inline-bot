@@ -42,7 +42,7 @@ parse_mode="HTML"
 
 # 2. Игра "Действие"
 dare_text = random.choice(DARES)
-results.append(InlineQueryResultArticle(results.append(
+results.append(InlineQueryResultArticle(
 types.InlineQueryResultArticle(
 id='1', 
 title='КТО Я? ', 
