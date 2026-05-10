@@ -1,0 +1,61 @@
+import asyncio
+import random
+import hashlib
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import InlineQueryResultArticle, InputTextMessageContent
+
+API_TOKEN = '8734155157:AAF7SBBYKtiAzZ7M3Ye5UDdwBQ0K5p8caJk'
+
+bot = Bot(token=API_TOKEN)
+dp = Dispatcher()
+
+# Базы данных для новых игр
+EIGHT_BALL = ["Да", "Нет", "Возможно", "Скорее всего да", "Даже не думай", "Спроси позже", "Определенно точно!"]
+WHO_MOST_LIKELY = ["станет миллионером", "сядет в тюрьму за глупость", "забудет ключи дома", "первым выйдет замуж/женится", "станет известным блогером"]
+LOVE_METER = ["0%", "15%", "45%", "69%", "80%", "100%", "Бесконечно! ❤️"]
+ZODIAC = ["Овен ♈", "Телец ♉", "Близнецы ♊", "Рак ♋", "Лев ♌", "Дева ♍", "Весы ♎", "Скорпион ♏", "Стрелец ♐", "Козерог ♑", "Водолей ♒", "Рыбы ♓"]
+MEME_ROLES = ["Скуф", "Альтушка", "Сигма", "Гигачад", "Нормис", "Босс КФС", "Тюбик"]
+
+@dp.inline_query()
+async def inline_handler(query: types.InlineQuery):
+    results = []
+    
+    # Вспомогательная функция для генерации ID
+    def get_id(name):
+        return hashlib.md5(name.encode()).hexdigest()
+
+    # 1. Шар судьбы (8-Ball)
+    results.append(InlineQueryResultArticle(
+        id=get_id('8ball'),
+        title='🔮 Магический шар',
+        description='Задай вопрос и получи ответ',
+        input_message_content=InputTextMessageContent(
+            message_text=f"❓ Вопрос: {query.query if query.query else '...'}\n🔮 Ответ шара: {random.choice(EIGHT_BALL)}", 
+            parse_mode="HTML")
+    ))
+
+    # 2. Кто из нас?
+    results.append(InlineQueryResultArticle(
+        id=get_id('who'),
+        title='🤔 Кто из нас...',
+        description='Случайная ситуация',
+        input_message_content=InputTextMessageContent(
+            message_text=f"У кого больше шансов, что он(а) {random.choice(WHO_MOST_LIKELY)}?", 
+            parse_mode="HTML")
+    ))
+
+    # 3. Любовный метр
+    results.append(InlineQueryResultArticle(
+        id=get_id('love'),
+        title='❤️ Любовный метр',
+        description='Проверь вашу совместимость',
+        input_message_content=InputTextMessageContent(
+            message_text=f"💖 Совместимость сегодня составляет: {random.choice(LOVE_METER)}")
+    ))
+
+    # 4. Камень, ножницы, бумага
+    knb = random.choice(['💎 Камень', '✂️ Ножницы', '📄 Бумага'])
+    results.append(InlineQueryResultArticle(
+        id=get_id('knb'),
+        title='✊ Камень, Ножницы, Бумага',
+        description='Бот сделает выбор за тебя',
